@@ -1,17 +1,17 @@
 package com.example.watsfordinner;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.watsfordinner.databinding.ActivityMainBinding;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String SETTINGS_INITIALIZED = "initialized";
 
 
-    public static boolean updateSettings = true;
     public static SharedPreferences sharedPrefs;
 
     private ActivityMainBinding binding;
@@ -30,15 +29,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Access shared preferences
+        sharedPrefs = getApplicationContext().getSharedPreferences("appPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPrefs.edit();
 
         if(sharedPrefs.getBoolean(SETTINGS_INITIALIZED, false))
             initializeSettings();
 
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView navView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -59,5 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         edit.apply();
     }
+
+
 
 }

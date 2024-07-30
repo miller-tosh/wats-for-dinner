@@ -12,6 +12,7 @@ public class MealDatabase {
 
     public String[][] meals;
 
+    /*
     // Load in the list of meals from saved preferences
     public void loadMeals() {
         String[] temp;
@@ -67,5 +68,7 @@ public class MealDatabase {
 
         loadMeals();       // Reload meal list after update
     }
+
+     */
 
 }
