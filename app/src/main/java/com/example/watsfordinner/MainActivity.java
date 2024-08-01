@@ -3,6 +3,9 @@ package com.example.watsfordinner;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -20,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String MEAL_LIST = "mealDB";        // the list of meals to generate from
     public static final String SETTINGS_INITIALIZED = "initialized";
 
+    TextView recipeName;
+    TextView recipeLevel;
+
+
+    // Button ID's
+    Button saveResult;
+    Button editMeal;
 
     public static SharedPreferences sharedPrefs;
 
@@ -29,12 +39,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Access shared preferences
+        // Access shared preferences and initialize if needed
         sharedPrefs = getApplicationContext().getSharedPreferences("appPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPrefs.edit();
-
         if(sharedPrefs.getBoolean(SETTINGS_INITIALIZED, false))
             initializeSettings();
+        else
+            edit.apply();
+
+        // Set button ID's
+        saveResult = findViewById(R.id.save_button);
+        // editMeal = findViewById(R.id.edit_button);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -49,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
 
     // If saved preferences haven't been initialized yet
     public void initializeSettings(){

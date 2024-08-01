@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">wats for dinner</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_menu">The Menu</string>
+    <string name="title_recipe">Recipe Book</string>
+    <string name="title_generate">Meal Plan</string>
+    <string name="save_button">Save</string>
 </resources>
