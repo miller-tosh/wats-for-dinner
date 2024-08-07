@@ -4,4 +4,5 @@
     <string name="title_recipe">Recipe Book</string>
     <string name="title_generate">Meal Plan</string>
     <string name="save_button">Save</string>
+    <string name="generate_button">Generate</string>
 </resources>

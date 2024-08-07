@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.watsfordinner.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_recipes"
+        android:name="com.example.watsfordinner.ui.recipes.RecipesFragment"
         android:label="@string/title_recipe"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_recipes" />
 
     <fragment
         android:id="@+id/navigation_notifications"
