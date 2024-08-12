@@ -23,17 +23,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String MEAL_LIST = "mealDB";        // the list of meals to generate from
     public static final String SETTINGS_INITIALIZED = "initialized";
 
-    TextView recipeName;
-    TextView recipeLevel;
-
-
-    // Button ID's
-    Button saveResult;
-    Button editMeal;
-
     public static SharedPreferences sharedPrefs;
 
     private ActivityMainBinding binding;
+
+    public static String[][] meals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +41,10 @@ public class MainActivity extends AppCompatActivity {
         else
             edit.apply();
 
-        // Set button ID's
-        // saveResult = findViewById(R.id.save_button);
-        // editMeal = findViewById(R.id.edit_button);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         BottomNavigationView navView = binding.navView;
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -74,7 +64,4 @@ public class MainActivity extends AppCompatActivity {
 
         edit.apply();
     }
-
-
-
 }

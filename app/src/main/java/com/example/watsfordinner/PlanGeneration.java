@@ -1,4 +1,7 @@
 package com.example.watsfordinner;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,18 +15,23 @@ public class PlanGeneration {
 
     // Generates and returns a list of randomly selected meals
 
-    public String[][] meals;
+    public static String[][] meals;
 
-    public String[] generate(int[] inputList) {
+    public static void generate(int[] inputList) {
 
         int i = 0;
         int x, y;
         Random r = new Random();
-        int j = inputList[inputList.length - (i + 1)];              // track currently generating difficulty
-        Integer[] selected = new Integer[inputList.length];         // track already selected meals
-        String[] plan = new String[inputList.length];               // the final meal plan
+        int j = inputList[inputList.length - (i + 1)];                   // track currently generating difficulty
+        Integer[] selected = new Integer[inputList.length];              // track already selected meals
+        SharedPreferences.Editor edit = MainActivity.sharedPrefs.edit();
 
-        for (;i < inputList.length;) {
+        // Clear old meal plan
+        edit.remove(MainActivity.MEAL_PLAN);
+        edit.putString((MainActivity.MEAL_PLAN), " ");
+        edit.apply();
+
+        for (; i < inputList.length; i++) {
             y = inputList[inputList.length - (i + 1)];              // find highest difficulty that needs generating
             if (j != y) {
                 j = y;
@@ -34,12 +42,15 @@ public class PlanGeneration {
                 x = r.nextInt(meals[y].length);    // random selection in list of meals of selected difficulty
                 if (Arrays.asList(selected).contains(x))
                     continue;
-                plan[i] =  meals[j][x];
+
+                // Write to MEAL_PLAN
+                edit.putString(MainActivity.MEAL_PLAN, meals[j][x] + ",");
+                edit.putString(MainActivity.MEAL_PLAN, j + ";");
+                edit.apply();
                 selected[i] = x;
                 i++;
                 break;
             }
         }
-        return plan;
     }
 }

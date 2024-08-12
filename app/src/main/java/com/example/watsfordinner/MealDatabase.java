@@ -10,11 +10,11 @@ Difficulty levels can be adjusted and items can be removed from the list.
 
 public class MealDatabase {
 
-    public String[][] meals;
+    public static String[][] meals;
 
-    /*
+
     // Load in the list of meals from saved preferences
-    public void loadMeals() {
+    public static void loadMeals() {
         String[] temp;
         int lvl0, lvl1, lvl2, lvl3;
         lvl0 = lvl1 = lvl2 = lvl3 = 0;
@@ -45,7 +45,7 @@ public class MealDatabase {
     }
 
     // Saves meal to saved preferences
-    public void addMeal(String[] meal) {
+    public static void addMeal(String[] meal) {
         SharedPreferences.Editor edit = MainActivity.sharedPrefs.edit();
         String addedMeal = meal[0].concat(",").concat(meal[1]);     // added meal is difficulty number followed by name
         edit.putString(MainActivity.MEAL_LIST, addedMeal);
@@ -53,7 +53,7 @@ public class MealDatabase {
     }
 
     // Removes meal from saved preferences
-    public void removeMeal(String[] meal){
+    public static void removeMeal(String[] meal){
         SharedPreferences.Editor edit = MainActivity.sharedPrefs.edit();
         int difficulty = Integer.parseInt(meal[0]);
 
@@ -69,6 +69,6 @@ public class MealDatabase {
         loadMeals();       // Reload meal list after update
     }
 
-     */
+
 
 }

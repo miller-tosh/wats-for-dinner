@@ -5,4 +5,8 @@
     <string name="title_generate">Meal Plan</string>
     <string name="save_button">Save</string>
     <string name="generate_button">Generate</string>
+    <string name="level_zero">Level 0</string>
+    <string name="level_one">Level 1</string>
+    <string name="level_two">Level 2</string>
+    <string name="level_three">Level 3</string>
 </resources>
